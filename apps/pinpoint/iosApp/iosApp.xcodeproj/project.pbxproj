@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		2144AA092F9124610057A70E /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2144AA082F9124610057A70E /* FirebaseAnalytics */; };
+		2144AA0B2F9124610057A70E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2144AA0A2F9124610057A70E /* FirebaseCrashlytics */; };
+		2144AA102F9124FB0057A70E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2144AA0F2F9124FB0057A70E /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinpoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -14,6 +20,8 @@
 		DEF13B43218AF041632AE7D7 /* Exceptions for "iosApp" folder in "iosApp" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				"Firebase/Prod/GoogleService-Info.plist",
+				"Firebase/Stg/GoogleService-Info.plist",
 				Info.plist,
 			);
 			target = AA84D823C5398EC907A78BE8 /* iosApp */;
@@ -41,17 +49,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2144AA092F9124610057A70E /* FirebaseAnalytics in Frameworks */,
+				2144AA102F9124FB0057A70E /* FirebaseCore in Frameworks */,
+				2144AA0B2F9124610057A70E /* FirebaseCrashlytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2144AA0E2F9124FB0057A70E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		638A69497C73C09AE20EC5EE = {
 			isa = PBXGroup;
 			children = (
 				38E25391B27DAA4A7E10B525 /* Configuration */,
 				25BE89C02DE91C021DF3A071 /* iosApp */,
+				2144AA0E2F9124FB0057A70E /* Frameworks */,
 				D5064A68255E10D8AB4A5A89 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +94,7 @@
 				D4BB3C789F06F13BD05B2406 /* Sources */,
 				ACC33BFF5C2206A9435D353A /* Frameworks */,
 				5F4BA06FC610C560CACDFF32 /* Resources */,
+				2144AA012F9122950057A70E /* FIrebase Run Script */,
 			);
 			buildRules = (
 			);
@@ -85,6 +105,9 @@
 			);
 			name = iosApp;
 			packageProductDependencies = (
+				2144AA082F9124610057A70E /* FirebaseAnalytics */,
+				2144AA0A2F9124610057A70E /* FirebaseCrashlytics */,
+				2144AA0F2F9124FB0057A70E /* FirebaseCore */,
 			);
 			productName = iosApp;
 			productReference = ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint.app */;
@@ -114,6 +137,9 @@
 			);
 			mainGroup = 638A69497C73C09AE20EC5EE;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D5064A68255E10D8AB4A5A89 /* Products */;
 			projectDirPath = "";
@@ -135,6 +161,25 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		2144AA012F9122950057A70E /* FIrebase Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "FIrebase Run Script";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Name of the resource \nGOOGLESERVICE_INFO_PLIST=GoogleService-Info.plist\n\n# Get references to dev and prod versions of the GoogleService-Info.plist\nGOOGLESERVICE_INFO_STG=${PROJECT_DIR}/iosApp/Firebase/Stg/${GOOGLESERVICE_INFO_PLIST}\nGOOGLESERVICE_INFO_PROD=${PROJECT_DIR}/iosApp/Firebase/Prod/${GOOGLESERVICE_INFO_PLIST}\n\n# Make sure the stg & prod version of GoogleService-Info.plist exists\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_STG}\"\nif [ ! -f $GOOGLESERVICE_INFO_STG ]\nthen\n    echo \"No Development GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\necho \"Looking for ${GOOGLESERVICE_INFO_PLIST} in ${GOOGLESERVICE_INFO_PROD}\"\nif [ ! -f $GOOGLESERVICE_INFO_PROD ]\nthen\n    echo \"No Production GoogleService-Info.plist found. Please ensure it's in the proper directory.\"\n    exit 1\nfi\n\n# Get a reference to the destination location for the GoogleService-Info.plist\nPLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\necho \"Will copy ${GOOGLESERVICE_INFO_PLIST} to final destination: ${PLIST_DESTINATION}\"\n\n\n# Copy over the stg GoogleService-Info.plist for Debug builds\nif [ \"${CONFIGURATION}\" == \"Debug\" ]\nthen\n    echo \"-> Using ${GOOGLESERVICE_INFO_STG}\"\n    echo \"-> Config ${CONFIGURATION}\"\n    cp \"${GOOGLESERVICE_INFO_STG}\" \"${PLIST_DESTINATION}\"\nelse\n    echo \"-> Using ${GOOGLESERVICE_INFO_PROD}\"\n    echo \"-> Config ${CONFIGURATION}\"\n    cp \"${GOOGLESERVICE_INFO_PROD}\" \"${PLIST_DESTINATION}\"\nfi\n";
+		};
 		732A0B1ABFC24C2DF8548AD2 /* Compile Kotlin Framework */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -181,6 +226,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PinPoint Dev";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -190,7 +236,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quibbly.pinpoint.debug;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quibbly.pinpoint;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -276,6 +322,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PinPoint Dev";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -285,7 +332,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.quibbly.pinpoint;
+				PRODUCT_BUNDLE_IDENTIFIER = com.quibbly.pinpoint.debug;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -372,6 +419,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.12.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2144AA082F9124610057A70E /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		2144AA0A2F9124610057A70E /* FirebaseCrashlytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCrashlytics;
+		};
+		2144AA0F2F9124FB0057A70E /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = FBC990AC08AAF76CBA8C420C /* Project object */;
 }

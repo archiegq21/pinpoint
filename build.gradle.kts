@@ -8,4 +8,6 @@ plugins {
     alias(libs.plugins.spm4kmm) apply false
     alias(libs.plugins.buildconfig) apply false
     alias(libs.plugins.mockkery) apply false
+    alias(libs.plugins.gms) apply false
+    alias(libs.plugins.crashlytics) apply false
 }

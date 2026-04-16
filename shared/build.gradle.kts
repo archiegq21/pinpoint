@@ -19,8 +19,9 @@ kotlin {
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
 
-            implementation(libs.kermit.koin)
             implementation(libs.kermit)
+            implementation(libs.kermit.koin)
+            implementation(libs.kermit.crashlytics)
         }
         commonTest.dependencies {
         }

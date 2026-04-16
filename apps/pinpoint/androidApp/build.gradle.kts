@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.compose.multiplatform)
     alias(libs.plugins.compose.compiler)
+    alias(libs.plugins.gms)
+    alias(libs.plugins.crashlytics)
 }
 
 kotlin {
@@ -31,6 +33,10 @@ kotlin {
         implementation(libs.compose.viewmodel)
 
         debugImplementation(libs.compose.preview.tooling)
+
+        implementation(project.dependencies.platform(libs.firebase.bom))
+        implementation(libs.firebase.crashlytics)
+        implementation(libs.firebase.analytics)
     }
 }
 
