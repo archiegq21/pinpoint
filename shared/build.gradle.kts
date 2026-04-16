@@ -57,8 +57,8 @@ dependencies {
     "androidRuntimeClasspath"(libs.compose.preview.tooling)
 }
 
-compose.resources {
-    packageOfResClass = "com.quibbly.shared"
-    generateResClass = always
-    publicResClass = false
-}
+//compose.resources {
+//    packageOfResClass = "com.quibbly.shared"
+//    generateResClass = always
+//    publicResClass = false
+//}
