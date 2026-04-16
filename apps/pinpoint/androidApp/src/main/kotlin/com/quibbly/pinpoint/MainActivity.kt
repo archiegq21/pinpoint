@@ -7,6 +7,7 @@ import androidx.activity.SystemBarStyle
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.quibbly.shared.PinPointApp
 
 
 class MainActivity : ComponentActivity() {
@@ -22,6 +23,8 @@ class MainActivity : ComponentActivity() {
                     Color.argb(0x80, 0x1b, 0x1b, 0x1b)
                 )
             )
+
+            PinPointApp()
         }
     }
 

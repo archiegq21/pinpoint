@@ -1,10 +1,10 @@
 import UIKit
 import SwiftUI
-import ComposeApp
+import shared
 
-struct ComposeView: UIViewControllerRepresentable {
+struct PinPointView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
-        MainViewControllerKt.MainViewController()
+        PinPointViewControllerKt.PinPointAppController()
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
@@ -12,8 +12,9 @@ struct ComposeView: UIViewControllerRepresentable {
 
 struct ContentView: View {
     var body: some View {
-        ComposeView()
-            .ignoresSafeArea()
+        PinPointView()
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .ignoresSafeArea(.all)
     }
 }
 

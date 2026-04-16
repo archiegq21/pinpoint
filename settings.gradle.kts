@@ -27,5 +27,7 @@ includeBuild("build-logic")
 
 include(
     ":apps:pinpoint:androidApp",
-    ":shared"
+    ":core:designsystem",
+    ":core:utility",
+    ":shared",
 )
