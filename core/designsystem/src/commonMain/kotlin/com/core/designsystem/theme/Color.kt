@@ -1,7 +1,5 @@
 package com.core.designsystem.theme
 
-import androidx.compose.foundation.background
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 
 val primaryLight = Color(0xFF00696F)

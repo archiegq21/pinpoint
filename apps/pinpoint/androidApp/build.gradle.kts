@@ -1,4 +1,3 @@
-import com.android.build.api.variant.ResValue
 import org.jetbrains.kotlin.konan.properties.Properties
 
 plugins {
