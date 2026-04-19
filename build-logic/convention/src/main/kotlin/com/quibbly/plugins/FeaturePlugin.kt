@@ -25,12 +25,10 @@ class FeaturePlugin: Plugin<Project> {
             apply(libs.findPlugin("spm4kmm").get().get().pluginId)
         }
 
-        val extension = project.extensions.create("featureConfig", FeatureConventionExtension::class.java)
-
         extensions.configure<KotlinMultiplatformExtension> {
             configureKotlinMultiplatform(this)
 
-            configureIos({ extension.name.get() }, this)
+            configureIos(this)
 
             configure<KotlinMultiplatformAndroidLibraryTarget> {
                 configureAndroid(this)
@@ -40,6 +38,12 @@ class FeaturePlugin: Plugin<Project> {
                 commonMain.dependencies {
                     implementation(project(":core:designsystem"))
                     implementation(project(":core:utility"))
+
+                    implementation(project.dependencies.platform(libs.findLibrary("koin-bom").get()))
+                    implementation(libs.findLibrary("koin-core").get())
+                    implementation(libs.findLibrary("koin-compose").get())
+
+                    implementation(libs.findLibrary("kermit").get())
                 }
                 commonTest.dependencies {
                     implementation(libs.findLibrary("compose-ui-test").get())
@@ -51,8 +55,4 @@ class FeaturePlugin: Plugin<Project> {
             "androidRuntimeClasspath"(libs.findLibrary("compose-preview-tooling").get())
         }
     }
-}
-
-interface FeatureConventionExtension {
-    val name: Property<String>
 }

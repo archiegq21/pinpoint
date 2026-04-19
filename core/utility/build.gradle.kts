@@ -1,6 +1,7 @@
 import com.codingfeline.buildkonfig.compiler.FieldSpec.Type
 import com.quibbly.Environment
 import com.quibbly.Keys
+import io.github.frankois944.spmForKmp.swiftPackageConfig
 
 plugins {
     id("com.quibbly.core.conventions")
@@ -8,13 +9,22 @@ plugins {
     alias(libs.plugins.buildconfig)
 }
 
-coreConfig {
-    name = "utility"
-}
-
 kotlin {
     android {
         namespace = "com.core.utility"
+    }
+
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach {
+        it.binaries.framework {
+            baseName = "utility"
+            isStatic = true
+        }
+        it.swiftPackageConfig("utility") {
+            minIos = libs.versions.ios.target.get()
+        }
     }
 }
 

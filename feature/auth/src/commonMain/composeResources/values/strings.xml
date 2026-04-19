@@ -1,0 +1,22 @@
+<resources>
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Please sign in to continue</string>
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login">Login</string>
+    <string name="login_signup">Don't have an account? Sign Up</string>
+    <string name="login_google">Login with Google</string>
+    <string name="login_or">OR</string>
+
+    <string name="signup_title">Create Account</string>
+    <string name="signup_subtitle">Join us and start your journey</string>
+    <string name="signup_name">Name</string>
+    <string name="signup_email">Email</string>
+    <string name="signup_password">Password</string>
+    <string name="signup_confirm_password">Confirm Password</string>
+    <string name="signup">Sign Up</string>
+    <string name="signup_login">Already have an account? Login</string>
+
+    <string name="password_visibility_show">Show password</string>
+    <string name="password_visibility_hide">Hide password</string>
+</resources>

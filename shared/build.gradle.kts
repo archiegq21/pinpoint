@@ -1,27 +1,38 @@
+import io.github.frankois944.spmForKmp.swiftPackageConfig
+
 plugins {
     id("com.quibbly.shared.conventions")
-}
-
-sharedConfig {
-    name = "shared"
 }
 
 kotlin {
     android {
         namespace = "com.quibbly.shared"
     }
+
+    listOf(
+        iosArm64(),
+        iosSimulatorArm64(),
+    ).forEach {
+        it.binaries.framework {
+            baseName = "shared"
+            isStatic = true
+        }
+        it.swiftPackageConfig("shared") {
+            minIos = libs.versions.ios.target.get()
+        }
+    }
     
     sourceSets {
         androidMain.dependencies {
         }
         commonMain.dependencies {
-            implementation(project.dependencies.platform(libs.koin.bom))
-            implementation(libs.koin.core)
-            implementation(libs.koin.compose)
+            implementation(projects.feature.auth)
 
-            implementation(libs.kermit)
-            implementation(libs.kermit.koin)
             implementation(libs.kermit.crashlytics)
+
+            implementation(libs.navigation3.ui)
+            implementation(libs.navigation3.adaptive)
+            implementation(libs.lifecycle.viewmodel.navigation3)
         }
         commonTest.dependencies {
         }

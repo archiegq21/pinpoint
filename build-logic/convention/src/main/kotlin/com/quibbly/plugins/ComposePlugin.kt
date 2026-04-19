@@ -22,5 +22,9 @@ class ComposePlugin : Plugin<Project> {
         extensions.configure<KotlinMultiplatformExtension> {
             configureCompose(this)
         }
+
+        dependencies {
+            "androidRuntimeClasspath"(libs.findLibrary("compose-preview-tooling").get())
+        }
     }
 }

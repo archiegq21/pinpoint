@@ -29,5 +29,7 @@ include(
     ":apps:pinpoint:androidApp",
     ":core:designsystem",
     ":core:utility",
+    ":feature:auth",
+    ":feature:api:auth",
     ":shared",
 )

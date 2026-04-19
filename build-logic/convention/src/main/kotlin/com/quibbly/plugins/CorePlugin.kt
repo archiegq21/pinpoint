@@ -9,6 +9,7 @@ import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.provider.Property
 import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.invoke
 import org.jetbrains.kotlin.gradle.dsl.KotlinMultiplatformExtension
 
 @Suppress("unused")
@@ -21,20 +22,20 @@ class CorePlugin: Plugin<Project> {
             apply(libs.findPlugin("spm4kmm").get().get().pluginId)
         }
 
-        val extension = project.extensions.create("coreConfig", CoreConventionExtension::class.java)
-
         extensions.configure<KotlinMultiplatformExtension> {
             configureKotlinMultiplatform(this)
 
-            configureIos({ extension.name.get() }, this)
+            configureIos(this)
 
             configure<KotlinMultiplatformAndroidLibraryTarget> {
                 configureAndroid(this)
             }
+
+            sourceSets {
+                commonMain.dependencies {
+                    implementation(libs.findLibrary("kermit").get())
+                }
+            }
         }
     }
-}
-
-interface CoreConventionExtension {
-    val name: Property<String>
 }

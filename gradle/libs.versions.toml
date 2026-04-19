@@ -25,6 +25,10 @@ kermit = "2.1.0"
 gms = "4.4.4"
 crashlytics = "3.0.7"
 firebase-bom = "34.12.0"
+firebase-kmm = "2.4.0"
+compottie = "2.1.0"
+credentials = "1.6.0"
+identity = "1.2.0"
 
 [libraries]
 # Android
@@ -69,6 +73,8 @@ koin-compose-navigation3 = { module = "io.insert-koin:koin-compose-navigation3" 
 coil-bom = { module = "io.coil-kt.coil3:coil-bom", version.ref = "coil" }
 coil-compose = { module = "io.coil-kt.coil3:coil-compose" }
 coil-ktor = { module = "io.coil-kt.coil3:coil-network-ktor3" }
+# Compottie
+compottie = { module = "io.github.alexzhirkevich:compottie", version.ref = "compottie" }
 # Ktor
 ktor-client-android = { module = "io.ktor:ktor-client-android", version.ref = "ktor" }
 ktor-client-darwin = { module = "io.ktor:ktor-client-darwin", version.ref = "ktor" }
@@ -79,8 +85,15 @@ kermit-crashlytics = { module = "co.touchlab:kermit-crashlytics", version.ref = 
 kermit-crashlytics-test = { module = "co.touchlab:kermit-crashlytics-test", version.ref = "kermit" }
 # Firebase
 firebase-bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase-bom" }
+firebase-auth = { module = "com.google.firebase:firebase-auth" }
 firebase-crashlytics = { module = "com.google.firebase:firebase-crashlytics" }
 firebase-analytics = { module = "com.google.firebase:firebase-analytics" }
+# Credential
+credentials = { module = "androidx.credentials:credentials", version.ref = "credentials" }
+credentials-play-auth = {  module = "androidx.credentials:credentials-play-services-auth", version.ref = "credentials" }
+identity = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "identity" }
+# Firebase KMM
+firebase-kmm-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebase-kmm" }
 # Plugins
 agp = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kmm-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }
