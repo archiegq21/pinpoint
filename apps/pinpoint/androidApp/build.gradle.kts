@@ -8,6 +8,9 @@ plugins {
     alias(libs.plugins.crashlytics)
 }
 
+val keyStoreProperties =
+    readProperties(file(projectDir.resolve("../../../keys/keystore.properties")))
+
 kotlin {
     compilerOptions {
         languageVersion = org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_3
@@ -74,8 +77,6 @@ android {
             enableV4Signing = true
         }
         create("release") {
-            val keyStoreProperties =
-                readProperties(file(projectDir.resolve("../../../keys/keystore.properties")))
             storeFile =
                 file(projectDir.resolve(keyStoreProperties.getProperty("RELEASE_STORE_FILE")))
             storePassword = keyStoreProperties.getProperty("RELEASE_STORE_PASSWORD")
@@ -99,6 +100,7 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["MAPS_API_KEY"] = keyStoreProperties.getProperty("ANDROID_MAP_KEY_DEV")
         }
         release {
             isDebuggable = false
@@ -109,8 +111,10 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+            manifestPlaceholders["MAPS_API_KEY"] = keyStoreProperties.getProperty("ANDROID_MAP_KEY_PROD")
         }
     }
+
 }
 
 private fun readProperties(propertiesFile: File) = Properties().apply {

@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 import FirebaseCore
 import GoogleSignIn
+import GoogleMaps
 import shared
 
 class AppDelegate: NSObject, UIApplicationDelegate,

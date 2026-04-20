@@ -7,6 +7,7 @@ import androidx.compose.ui.Modifier
 import com.core.designsystem.theme.CandyTheme
 import com.core.navigation.rememberNavigator
 import com.feature.api.auth.LoginNavKey
+import com.feature.api.dashboard.MapNavKey
 import org.koin.compose.viewmodel.koinViewModel
 
 
@@ -19,7 +20,7 @@ fun PinPointApp() {
             dynamicColor = false,
         ) {
             val navigator = rememberNavigator(
-                LoginNavKey,
+                MapNavKey,
                 configuration = Config,
             )
 

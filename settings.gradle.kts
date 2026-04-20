@@ -32,7 +32,9 @@ include(
     ":core:utility",
     ":feature:auth",
     ":feature:profile",
+    ":feature:dashboard",
     ":feature:api:auth",
     ":feature:api:profile",
+    ":feature:api:dashboard",
     ":shared",
 )

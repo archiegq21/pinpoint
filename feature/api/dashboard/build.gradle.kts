@@ -1,12 +1,13 @@
 import io.github.frankois944.spmForKmp.swiftPackageConfig
 
 plugins {
-    id("com.quibbly.shared.conventions")
+    id("com.quibbly.feature.conventions")
+    alias(libs.plugins.serialization)
 }
 
 kotlin {
     android {
-        namespace = "com.quibbly.shared"
+        namespace = "com.feature.api.dashboard"
     }
 
     listOf(
@@ -14,39 +15,27 @@ kotlin {
         iosSimulatorArm64(),
     ).forEach {
         it.binaries.framework {
-            baseName = "shared"
+            baseName = "apidashboard"
             isStatic = true
         }
-        it.swiftPackageConfig("shared") {
+        it.swiftPackageConfig("apidashboard") {
             minIos = libs.versions.ios.target.get()
         }
     }
-    
+
     sourceSets {
-        androidMain.dependencies {
-        }
         commonMain.dependencies {
-            implementation(projects.core.navigation)
-
-            implementation(projects.feature.auth)
-            implementation(projects.feature.profile)
-            implementation(projects.feature.dashboard)
-
-            implementation(libs.kermit.crashlytics)
-
             implementation(libs.navigation3.ui)
             implementation(libs.navigation3.adaptive)
             implementation(libs.lifecycle.viewmodel.navigation3)
         }
         commonTest.dependencies {
         }
-        iosMain.dependencies {
-        }
     }
 }
 
 compose.resources {
-    packageOfResClass = "com.quibbly.shared"
+    packageOfResClass = "com.feature.api.dashboard"
     generateResClass = always
     publicResClass = false
 }

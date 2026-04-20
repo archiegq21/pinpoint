@@ -30,6 +30,8 @@ compottie = "2.1.0"
 credentials = "1.6.0"
 identity = "1.2.0"
 serialization = "1.11.0"
+play-services-maps = "20.0.0"
+maps-kmm = "0.6.0"
 
 [libraries]
 # Android
@@ -96,6 +98,8 @@ credentials-play-auth = {  module = "androidx.credentials:credentials-play-servi
 identity = { module = "com.google.android.libraries.identity.googleid:googleid", version.ref = "identity" }
 # Firebase KMM
 firebase-kmm-auth = { module = "dev.gitlive:firebase-auth", version.ref = "firebase-kmm" }
+# Map
+maps-kmm = { module = "eu.buney.maps:kmp-maps-compose", version.ref = "maps-kmm" }
 # Plugins
 agp = { module = "com.android.tools.build:gradle", version.ref = "agp" }
 kmm-gradle-plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin" }

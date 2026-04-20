@@ -22,6 +22,8 @@ import com.core.navigation.Navigator
 import com.core.navigation.decorator.rememberMainTopBarAppSceneDecoratorStrategy
 import com.feature.auth.authEntryBuilder
 import com.feature.auth.authNavKeySerializers
+import com.feature.dashboard.dashboardEntryBuilder
+import com.feature.dashboard.dashboardNavKeySerializers
 import com.feature.profile.component.ProfileImage
 import com.feature.profile.navigateToProfile
 import com.feature.profile.profileEntryBuilder
@@ -33,6 +35,7 @@ internal val Config = SavedStateConfiguration {
     serializersModule = SerializersModule {
         polymorphic(NavKey::class) {
             authNavKeySerializers()
+            dashboardNavKeySerializers()
             profileNavKeySerializers()
         }
     }
@@ -80,6 +83,7 @@ internal fun PinPointNavigation(
             ),
             entryProvider = entryProvider {
                 authEntryBuilder()
+                dashboardEntryBuilder()
                 profileEntryBuilder()
             }
         )

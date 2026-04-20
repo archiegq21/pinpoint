@@ -13,10 +13,11 @@
 		2144AA0B2F9124610057A70E /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 2144AA0A2F9124610057A70E /* FirebaseCrashlytics */; };
 		2144AA102F9124FB0057A70E /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2144AA0F2F9124FB0057A70E /* FirebaseCore */; };
 		217186612F91FDDF00EC2AEF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 217186602F91FDDF00EC2AEF /* FirebaseAuth */; };
+		21CD87952F9691C7005633E8 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 21CD87942F9691C7005633E8 /* GoogleMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pinpoint.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pinpoint Dev.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -57,6 +58,7 @@
 				2144AA102F9124FB0057A70E /* FirebaseCore in Frameworks */,
 				2106F7A62F9240ED00B802AE /* GoogleSignInSwift in Frameworks */,
 				2144AA0B2F9124610057A70E /* FirebaseCrashlytics in Frameworks */,
+				21CD87952F9691C7005633E8 /* GoogleMaps in Frameworks */,
 				217186612F91FDDF00EC2AEF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -84,7 +86,7 @@
 		D5064A68255E10D8AB4A5A89 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint.app */,
+				ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,9 +119,10 @@
 				217186602F91FDDF00EC2AEF /* FirebaseAuth */,
 				2106F7A32F9240ED00B802AE /* GoogleSignIn */,
 				2106F7A52F9240ED00B802AE /* GoogleSignInSwift */,
+				21CD87942F9691C7005633E8 /* GoogleMaps */,
 			);
 			productName = iosApp;
-			productReference = ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint.app */;
+			productReference = ADF04D5E8BFE7EAAEFBDB10B /* Pinpoint Dev.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -130,7 +133,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1620;
-				LastUpgradeCheck = 1620;
+				LastUpgradeCheck = 2640;
 				TargetAttributes = {
 					AA84D823C5398EC907A78BE8 = {
 						CreatedOnToolsVersion = 16.2;
@@ -149,6 +152,7 @@
 			packageReferences = (
 				2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				2106F7A22F9240ED00B802AE /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				21CD87932F9691C7005633E8 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = D5064A68255E10D8AB4A5A89 /* Products */;
@@ -225,15 +229,12 @@
 		52BBBAA92CFD58656DA30C29 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
-				FIREBASE_URL_SCHEME = "com.googleusercontent.apps.870871987238-aqpnbjak03emn8kdl507rid6q7c4tc7i";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PinPoint Dev";
@@ -258,7 +259,7 @@
 		B15231EDBBEBFC5971BB48FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 38E25391B27DAA4A7E10B525 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReferenceRelativePath = DevSecrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -292,6 +293,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -315,6 +317,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -323,15 +326,12 @@
 		C10F6976C2DF2E13407C5B9B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = arm64;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"iosApp/Preview Content\"";
-				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_PREVIEWS = YES;
-				FIREBASE_URL_SCHEME = "com.googleusercontent.apps.1082625733721-36kuotb9747m0sahvrq4vntv3q4qlbqk";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = iosApp/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "PinPoint Dev";
@@ -356,7 +356,7 @@
 		E081A6BC7AAA876250B58E74 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReferenceAnchor = 38E25391B27DAA4A7E10B525 /* Configuration */;
-			baseConfigurationReferenceRelativePath = Config.xcconfig;
+			baseConfigurationReferenceRelativePath = ProdSecrets.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -390,6 +390,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = "${TEAM_ID}";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
@@ -406,6 +407,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -451,6 +453,14 @@
 				minimumVersion = 12.12.0;
 			};
 		};
+		21CD87932F9691C7005633E8 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 10.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -483,6 +493,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2144AA072F9124610057A70E /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAuth;
+		};
+		21CD87942F9691C7005633E8 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 21CD87932F9691C7005633E8 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

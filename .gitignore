@@ -22,3 +22,5 @@ node_modules/
 /apps/pinpoint/androidApp/src/release/google-services.json
 /apps/pinpoint/iosApp/iosApp/Firebase/Prod/GoogleService-Info.plist
 /apps/pinpoint/iosApp/iosApp/Firebase/Stg/GoogleService-Info.plist
+/apps/pinpoint/iosApp/Configuration/DevSecrets.xcconfig
+/apps/pinpoint/iosApp/Configuration/ProdSecrets.xcconfig
