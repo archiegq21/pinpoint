@@ -4,25 +4,27 @@ import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.navigation3.runtime.NavBackStack
-import androidx.navigation3.runtime.NavKey
-import androidx.navigation3.runtime.rememberNavBackStack
 import com.core.designsystem.theme.CandyTheme
+import com.core.navigation.rememberNavigator
 import com.feature.api.auth.LoginNavKey
+import org.koin.compose.viewmodel.koinViewModel
 
 
 @Composable
 fun PinPointApp() {
-    val backStack: NavBackStack<NavKey> = rememberNavBackStack(Config, LoginNavKey)
-
     PinPointDependencyProvider {
+        PinPointCoilSetup()
         CandyTheme(
             darkTheme = isSystemInDarkTheme(),
             dynamicColor = false,
         ) {
+            val navigator = rememberNavigator(
+                LoginNavKey,
+                configuration = Config,
+            )
+
             PinPointNavigation(
-                backStack = backStack,
-                onBack = { backStack.removeLastOrNull() },
+                navigator = navigator,
                 modifier = Modifier.fillMaxSize(),
             )
         }

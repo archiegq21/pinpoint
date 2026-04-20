@@ -92,12 +92,10 @@ private fun LoginScreen(
 
     Column(
         modifier = modifier
-            .background(
-                brush = Brush.verticalGradient(
-                    0.9f to Color.Transparent,
-                    1.0f to MaterialTheme.colorScheme.tertiary,
-                )
-            )
+            .background(brush = Brush.verticalGradient(
+                0.9f to Color.Transparent,
+                1.0f to MaterialTheme.colorScheme.tertiary,
+            ))
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = 16.dp)

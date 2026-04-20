@@ -21,6 +21,7 @@ class SharedPlugin: Plugin<Project> {
             apply(libs.findPlugin("kotlin-multiplatform").get().get().pluginId)
             apply(libs.findPlugin("compose-multiplatform").get().get().pluginId)
             apply(libs.findPlugin("compose-compiler").get().get().pluginId)
+            apply(libs.findPlugin("serialization").get().get().pluginId)
             apply(libs.findPlugin("spm4kmm").get().get().pluginId)
         }
 
@@ -34,6 +35,9 @@ class SharedPlugin: Plugin<Project> {
             }
 
             sourceSets {
+                androidMain.dependencies {
+                    implementation(libs.findLibrary("koin-android").get())
+                }
                 commonMain.dependencies {
                     implementation(project(":core:designsystem"))
                     implementation(project(":core:utility"))
@@ -41,11 +45,17 @@ class SharedPlugin: Plugin<Project> {
                     implementation(project.dependencies.platform(libs.findLibrary("koin-bom").get()))
                     implementation(libs.findLibrary("koin-core").get())
                     implementation(libs.findLibrary("koin-compose").get())
+                    implementation(libs.findLibrary("koin-compose-viewmodel").get())
+                    implementation(libs.findLibrary("koin-compose-viewmodel-navigation").get())
+                    implementation(libs.findLibrary("koin-compose-navigation3").get())
+
+                    implementation(libs.findLibrary("kotlinx-serialization-core").get())
 
                     implementation(libs.findLibrary("kermit-koin").get())
                     implementation(libs.findLibrary("kermit").get())
                 }
                 commonTest.dependencies {
+                    implementation(libs.findLibrary("koin-test").get())
                     implementation(libs.findLibrary("compose-ui-test").get())
                 }
             }

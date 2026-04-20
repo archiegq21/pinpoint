@@ -1,7 +1,9 @@
 package com.feature.api.auth
 
-import androidx.navigation3.runtime.NavKey
+import com.core.navigation.NavKey
 import kotlinx.serialization.Serializable
 
 @Serializable
-data object SignUpNavKey: NavKey
+data object SignUpNavKey: NavKey {
+    override val isLoginRequired: Boolean = false
+}

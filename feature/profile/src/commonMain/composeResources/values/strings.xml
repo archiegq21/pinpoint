@@ -1,0 +1,4 @@
+<resources>
+    <string name="profile_image_content_description">Profile Image</string>
+    <string name="logout">Logout</string>
+</resources>

@@ -15,4 +15,5 @@ val authModule = module {
     single<FirebaseAuth> { Firebase.auth }
     singleOf(::FirebaseAuthService) bind AuthService::class
     singleOf(::RealAuthRepository) bind AuthRepository::class
+
 }

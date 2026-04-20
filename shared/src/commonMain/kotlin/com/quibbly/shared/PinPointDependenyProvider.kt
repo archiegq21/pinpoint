@@ -5,6 +5,7 @@ import co.touchlab.kermit.Logger
 import co.touchlab.kermit.koin.KermitKoinLogger
 import com.core.utility.UtilityConfig
 import com.feature.auth.di.authModule
+import com.feature.profile.di.profileModule
 import org.koin.compose.KoinApplication
 import org.koin.core.logger.Level
 import org.koin.dsl.KoinAppDeclaration
@@ -25,5 +26,6 @@ private val declaration: KoinAppDeclaration = {
     logger(KermitKoinLogger(Logger.withTag("koin")))
     modules(
         authModule,
+        profileModule,
     )
 }

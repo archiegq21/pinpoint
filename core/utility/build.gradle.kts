@@ -5,7 +5,6 @@ import io.github.frankois944.spmForKmp.swiftPackageConfig
 
 plugins {
     id("com.quibbly.core.conventions")
-    alias(libs.plugins.serialization)
     alias(libs.plugins.buildconfig)
 }
 

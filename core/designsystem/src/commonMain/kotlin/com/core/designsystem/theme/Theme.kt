@@ -272,11 +272,7 @@ fun CandyTheme(
             shapes = CandyShapes,
             typography = CandyTypography,
             content = {
-                Box(
-                    modifier = Modifier
-                        .background(MaterialTheme.colorScheme.background)
-                        .fillMaxSize(),
-                ) {
+                Box(modifier = Modifier.background(MaterialTheme.colorScheme.background)) {
                     CompositionLocalProvider(LocalContentColor provides MaterialTheme.colorScheme.onBackground) {
                         content()
                     }

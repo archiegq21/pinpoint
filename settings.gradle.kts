@@ -28,8 +28,11 @@ includeBuild("build-logic")
 include(
     ":apps:pinpoint:androidApp",
     ":core:designsystem",
+    ":core:navigation",
     ":core:utility",
     ":feature:auth",
+    ":feature:profile",
     ":feature:api:auth",
+    ":feature:api:profile",
     ":shared",
 )
